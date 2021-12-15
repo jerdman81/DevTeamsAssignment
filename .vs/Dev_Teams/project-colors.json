@@ -15,7 +15,12 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "e44c2fcc-dd17-488e-bcf9-ac34278eb024": {
+      "ProjectGuid": "e44c2fcc-dd17-488e-bcf9-ac34278eb024",
+      "DisplayName": "DevTeams.UI",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

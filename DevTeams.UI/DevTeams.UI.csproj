@@ -43,11 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProgramUI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevTeams_POCOs\DevTeams_POCOs.csproj">
+      <Project>{4267b88a-be9c-46ff-ac34-312d48be4fd6}</Project>
+      <Name>DevTeams_POCOs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevTeams_Repository\DevTeams_Repository.csproj">
+      <Project>{E35D17C7-FADF-4077-B9D1-5146CF3812FE}</Project>
+      <Name>DevTeams_Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
