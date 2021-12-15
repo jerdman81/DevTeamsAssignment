@@ -9,14 +9,24 @@ namespace DevTeams_Repository
 {
     // This is our database of Teams
 
+
     /*Managers need to bea able to add and remove members to/from a team by their unique identifier
      They should be able to see a list of existing developers to choose from and add to existing teams.
     Manager will create a team, then add developers individually from the Developer Directory to that team*/
     public class DeveloperTeamRepository
     {
         private readonly List<DevTeam> _devTeamContext = new List<DevTeam>();
-        private DeveloperRepository _developerRepository = new DeveloperRepository();
+
+        private DeveloperRepository _developerRepository;  // This brings in the Developer Repository wihtout changing it.  If you instantiate a new it will overwrite existing.
+
         private int _count;
+
+        public DeveloperTeamRepository(DeveloperRepository developerRepository)
+        {
+            _developerRepository = developerRepository;
+        }  
+        
+        
 
         //Create
         public bool AddDevTeam(DevTeam devTeam)
