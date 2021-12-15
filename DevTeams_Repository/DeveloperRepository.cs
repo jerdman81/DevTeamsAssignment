@@ -12,17 +12,23 @@ namespace DevTeams_Repository
     public class DeveloperRepository
     {
         private readonly List<Developer> _developerContext = new List<Developer>();
-
+        private int _count;
 
         //Create  -- A Developer
         public bool AddHumanToDeveloper(Developer developer)
         {
-            int startingCount = _developerContext.Count;
-            _developerContext.Add(developer);
-
-            bool wasAdded = (_developerContext.Count > startingCount) ? true : false;
-            return wasAdded;
-        }  // Will work but will allow Developers with same ID (match dev tem repository code)
+            if (developer == null)
+            {
+                return false;
+            }
+            else
+            {
+                _count++;
+                developer.Id = _count;
+                _developerContext.Add(developer);
+                return true;
+            }
+        } 
 
 
         //Read -- Return list of developers or developer
@@ -74,6 +80,30 @@ namespace DevTeams_Repository
             bool deleteDeveloper = _developerContext.Remove(exitsingDeveloper);
             return deleteDeveloper;
         }
+
+
+
+        // Create list of all developers that need Pluralsight license
+        // Read
+
+        public Developer GetDeveloperThatNeedsLicense (bool hasPluralsight)
+        {
+            List<Developer> developers = new List<Developer>();
+            foreach (Developer developer in _developerContext)
+            {
+                if(developer.HasPluralsight == false)
+                {
+                    return developer;
+                }
+            }
+            return null;
+            
+        }
+
+
+
+
+
     }
 
 }
