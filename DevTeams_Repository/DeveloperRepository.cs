@@ -86,21 +86,21 @@ namespace DevTeams_Repository
         // Create list of all developers that need Pluralsight license
         // Read
 
-        public Developer GetDeveloperThatNeedsLicense (bool hasPluralsight)
+        public List<Developer> GetDeveloperThatNeedsLicense ()
         {
-            List<Developer> developers = new List<Developer>();
+            List<Developer> devsThatNeedLicense = new List<Developer>();
             foreach (Developer developer in _developerContext)
             {
                 if(developer.HasPluralsight == false)
                 {
-                    return developer;
+                    devsThatNeedLicense.Add(developer);
                 }
             }
-            return null;
+            return devsThatNeedLicense;
+
+            //  return _developerContext.Where(m => !m.HasPluralsight).ToList();   <-Alternative
             
         }
-
-
 
 
 

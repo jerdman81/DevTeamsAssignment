@@ -15,6 +15,7 @@ namespace DevTeams_Repository
     public class DeveloperTeamRepository
     {
         private readonly List<DevTeam> _devTeamContext = new List<DevTeam>();
+        private DeveloperRepository _developerRepository = new DeveloperRepository();
         private int _count;
 
         //Create
@@ -58,7 +59,7 @@ namespace DevTeams_Repository
         public bool UpdateExistingDevTeam(int originalID, DevTeam newdata)
         {
             //find the old content...
-            DevTeam oldDevTeam = GetDevTeamById(originalID); //What is the problem here? Need to use helper method to fix.
+            DevTeam oldDevTeam = GetDevTeamById(originalID); //Use helper method to pull single team by ID
 
             if (oldDevTeam != null)
             {
@@ -72,6 +73,39 @@ namespace DevTeams_Repository
                 return false;
             }
         }
+
+        //Update  -  Add a single developer to an existing team
+
+        public bool AddDeveloperToExistingTeam(int teamID, int developerID)                 //Return type - do we need it to report back in any way
+        {
+            //Find the Team
+            DevTeam devTeam = GetDevTeamById(teamID);                                      // Call a specificteam
+            int startingCount = devTeam.Developers.Count;                                  // Local variable to represent count of Developers in the team
+            Developer devToAdd = _developerRepository.GetDeveloperbyID(developerID);       // Call a specific Developer
+
+            devTeam.Developers.Add(devToAdd);                                             //  Add specific Developer to Team
+            
+            return (startingCount < devTeam.Developers.Count);                            //  Compare starting count to count after adding.  True if added successfully.
+        }
+
+        //Update  -  Remove a single developer to an existing team
+
+        public bool RemoveDeveloperFromExistingTeam(int teamID, int developerID)           // Return type - do we need it to report back in any way (void, bool, string, etc)
+        {
+            //Find the Team
+            DevTeam devTeam = GetDevTeamById(teamID);                                      // Call a specificteam
+            int startingCount = devTeam.Developers.Count;                                  // Local variable to represent count of Developers in the team
+            Developer devToRemove = _developerRepository.GetDeveloperbyID(developerID);       // Call a specific Developer
+
+            devTeam.Developers.Remove(devToRemove);                                             //  Add specific Developer to Team
+
+            return (startingCount > devTeam.Developers.Count);                            //  Compare starting count to count after adding.  True if removed successfully.
+        }
+
+
+         // Update -- Add multiple developers to an existing team at once
+
+
 
         //Delete
         public bool DeleteExistingTeam(DevTeam existingDevTeam)
