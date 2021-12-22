@@ -183,7 +183,14 @@ namespace DevTeams.UI
 
         private void ViewDevelopersNeedingPluralsight()
         {
-            throw new NotImplementedException();
+            Clear();
+            Console.WriteLine("The following Developers Need A Pluralsight license: ");
+            List<Developer> devs = _devRepo.GetDeveloperThatNeedsLicense();
+            foreach (Developer developer in devs)
+            {
+                ViewExistingDeveloperDetails(developer);
+            }
+            WaitForKeypress();
         }
 
         private void WaitForKeypress()
@@ -226,7 +233,7 @@ namespace DevTeams.UI
 
             DevTeam team2 = new DevTeam();
             team2.TeamName = "The Dude";
-            team2.Developers = new List<Developer>() { };
+            team2.Developers = new List<Developer>() { dev1};
             _devTeamRepo.AddDevTeam(team2);
 
             DevTeam team3 = new DevTeam();
