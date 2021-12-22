@@ -24,10 +24,10 @@ namespace DevTeams_Repository
                     return false;
                 }
             }
-                _count++;
-                developer.Id = _count;
-                _developerContext.Add(developer);
-                return true;
+            _count++;
+            developer.Id = _count;
+            _developerContext.Add(developer);
+            return true;
         }
 
 

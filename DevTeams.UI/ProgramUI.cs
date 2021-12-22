@@ -93,7 +93,7 @@ namespace DevTeams.UI
             string yesOrNo = ReadLine();
             string yesOrNoLower = yesOrNo.ToLower();
             bool hasPluralsight = bool.Parse(yesOrNoLower);
-                        
+
             developer.HasPluralsight = hasPluralsight;
 
             _devRepo.AddHumanToDeveloper(developer);
@@ -105,11 +105,11 @@ namespace DevTeams.UI
             List<Developer> developerList = _devRepo.GetAllDevelopers();
             foreach (Developer developer in developerList)
             {
-                ViewExistingDeveloperDetails (developer);
+                ViewExistingDeveloperDetails(developer);
             }
             WaitForKeypress();
         }
-        private void ViewExistingDeveloperDetails (Developer developer)
+        private void ViewExistingDeveloperDetails(Developer developer)
         {
             Console.WriteLine(
                 $"Developer ID: {developer.Id} \n" +
@@ -136,7 +136,7 @@ namespace DevTeams.UI
             List<DevTeam> devTeamList = _devTeamRepo.GetAllTeams();
             foreach (DevTeam devTeam in devTeamList)
             {
-                ViewExistingDevTeamDetails (devTeam);
+                ViewExistingDevTeamDetails(devTeam);
             }
             WaitForKeypress();
         }
@@ -166,6 +166,32 @@ namespace DevTeams.UI
             string developer = ReadLine();
             int developerInt = Convert.ToInt32(developer);
             _devTeamRepo.AddDeveloperToExistingTeam(devTeamNumberInt, developerInt);
+
+            Console.WriteLine("Would you like to add more Developers to this team? (y/n): ");
+
+            bool addMoreDevs = true;
+            
+            while (addMoreDevs)
+            {
+                string answer = ReadLine().ToLower();
+                if (answer == "y")
+                {
+                    Console.WriteLine("Which Developer would you like to add to this DevTeam? (input ID):");
+                    string developer2 = ReadLine();
+                    int developerInt2 = Convert.ToInt32(developer2);
+                    _devTeamRepo.AddDeveloperToExistingTeam(devTeamNumberInt, developerInt2);
+                    Console.WriteLine("Would you like to add more Developers to this team? (y/n): ");
+                    continue;
+                }
+
+                if (answer != "y")
+                {
+                    addMoreDevs = false;
+                }
+                
+            }
+            Console.WriteLine("All Developers Added!");
+            WaitForKeypress();
 
         }
 
@@ -228,20 +254,20 @@ namespace DevTeams.UI
 
             DevTeam team1 = new DevTeam();
             team1.TeamName = "Urban Achievers";
-            team1.Developers = new List<Developer>() { dev1, dev2, dev3};
+            team1.Developers = new List<Developer>() { dev1, dev2, dev3 };
             _devTeamRepo.AddDevTeam(team1);
 
             DevTeam team2 = new DevTeam();
             team2.TeamName = "The Dude";
-            team2.Developers = new List<Developer>() { dev1};
+            team2.Developers = new List<Developer>() { dev1 };
             _devTeamRepo.AddDevTeam(team2);
 
             DevTeam team3 = new DevTeam();
             team3.TeamName = "The Nihilists";
             team3.Developers = new List<Developer>() { dev4 };
             _devTeamRepo.AddDevTeam(team3);
-            
-            
+
+
         }
     }
 }
