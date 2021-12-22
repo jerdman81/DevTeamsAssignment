@@ -1,9 +1,7 @@
-﻿using DevTeams_Repository;
+﻿using DevTeams_POCOs;
+using DevTeams_Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console; // Makes it so you don't have to say Console. before ReadLine or WriteLine
 
 namespace DevTeams.UI
@@ -27,7 +25,7 @@ namespace DevTeams.UI
             RunApplication();
         }
 
-        
+
 
         private void RunApplication()
         {
@@ -39,9 +37,11 @@ namespace DevTeams.UI
                     "2. View all existing Developers\n" +
                     "3. View an Existing Developer\n" +
                     "4. Update An Existing Developer\n" +
-                    "5.  Delete An Existing Developer\n");
-                    // Add 5 or more DevTeam Methods
-                    // Add Challenge Methods
+                    "5. Delete An Existing Developer\n");
+                    /*"6. View Developers Who Need Pluralsight License");*/
+
+                // Add 5 or more DevTeam Methods
+                // Add Challenge Methods
 
                 string userInput = ReadLine();
 
@@ -54,7 +54,7 @@ namespace DevTeams.UI
                         ViewAllExistingDevelopers();
                         break;
                     case "3":
-                        ViewExistingDeveloper();
+                        ViewExistingDevelopersByID();
                         break;
                     case "4":
                         UpdateExistingDeveloper();
@@ -62,6 +62,9 @@ namespace DevTeams.UI
                     case "5":
                         DeleteExistingDeveloper();
                         break;
+                   /* case "6":
+                        ViewDevelopersNeedingPluralsight();
+                        break;*/
                     default:
                         WriteLine("Invalid Selection");
                         WaitForKeypress();
@@ -71,30 +74,77 @@ namespace DevTeams.UI
             }
         }
 
-        private void DeleteExistingDeveloper()
+       
+
+        private void AddDeveloper()
         {
-            throw new NotImplementedException();
+            Clear();
+            Developer developer = new Developer();
+            WriteLine("Please Enter First Name: ");
+            string firstName = ReadLine();
+            developer.FirstName = firstName;
+
+            WriteLine("Please Enter Last Name: ");
+            string lastName = ReadLine();
+            developer.LastName = lastName;
+
+            WriteLine("Does this Developer Have a Pluralsight license? (true/false) ");
+            string yesOrNo = ReadLine();
+            string yesOrNoLower = yesOrNo.ToLower();
+            bool hasPluralsight = bool.Parse(yesOrNoLower);
+                        
+            developer.HasPluralsight = hasPluralsight;
+
+            _devRepo.AddHumanToDeveloper(developer);
+        }
+        private void ViewAllExistingDevelopers()
+        {
+            Clear();
+            Console.WriteLine("All Existing Developers: \n");
+            List<Developer> developerList = _devRepo.GetAllDevelopers();
+            foreach (Developer developer in developerList)
+            {
+                ViewExistingDeveloperDetails (developer);
+            }
+            WaitForKeypress();
+        }
+        private void ViewExistingDeveloperDetails (Developer developer)
+        {
+            Console.WriteLine(
+                $"Developer ID: {developer.Id} \n" +
+                $"Developer Name: {developer.FullName} \n" +
+                $"Has Pluralsight License: {developer.HasPluralsight} \n" +
+                $"========================================================= \n");
+
         }
 
+        private void ViewExistingDevelopersByID()
+        {
+            Clear();
+            Console.WriteLine("Which Developer ID Would You Like To View? ");
+            string developerID = ReadLine();
+            int developerIDInt = Convert.ToInt32(developerID);
+            Developer devToFind = _devRepo.GetDeveloperbyID(developerIDInt);
+            ViewExistingDeveloperDetails(devToFind);
+            WaitForKeypress();
+        }
         private void UpdateExistingDeveloper()
         {
             throw new NotImplementedException();
         }
-
-        private void ViewExistingDeveloper()
+        private void DeleteExistingDeveloper()
         {
             throw new NotImplementedException();
         }
-
-        private void AddDeveloper()
+        private void ViewDevelopersNeedingPluralsight()
         {
-            throw new NotImplementedException();
+            Clear();
+            Console.WriteLine("These Developers need a Pluralsight license: ");
+            List<Developer> developerList = _devRepo.GetDeveloperThatNeedsLicense();
+            
+            WaitForKeypress();
         }
 
-        private void ViewAllExistingDevelopers()
-        {
-            throw new NotImplementedException();
-        }
 
         private void WaitForKeypress()
         {

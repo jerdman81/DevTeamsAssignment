@@ -1,9 +1,5 @@
 ﻿using DevTeams_POCOs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevTeams_Repository
 {
@@ -24,9 +20,9 @@ namespace DevTeams_Repository
         public DeveloperTeamRepository(DeveloperRepository developerRepository)
         {
             _developerRepository = developerRepository;
-        }  
-        
-        
+        }
+
+
 
         //Create
         public bool AddDevTeam(DevTeam devTeam)
@@ -94,7 +90,7 @@ namespace DevTeams_Repository
             Developer devToAdd = _developerRepository.GetDeveloperbyID(developerID);       // Call a specific Developer
 
             devTeam.Developers.Add(devToAdd);                                             //  Add specific Developer to Team
-            
+
             return (startingCount < devTeam.Developers.Count);                            //  Compare starting count to count after adding.  True if added successfully.
         }
 
@@ -113,7 +109,7 @@ namespace DevTeams_Repository
         }
 
 
-         // Update -- Add multiple developers to an existing team at once
+        // Update -- Add multiple developers to an existing team at once
 
 
 

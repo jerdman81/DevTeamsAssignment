@@ -1,0 +1,13 @@
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\bin\Debug\DevTeams.UI.exe.config
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\bin\Debug\DevTeams.UI.exe
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\bin\Debug\DevTeams.UI.pdb
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\bin\Debug\DevTeams_POCOs.dll
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\bin\Debug\DevTeams_Repository.dll
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\bin\Debug\DevTeams_POCOs.pdb
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\bin\Debug\DevTeams_Repository.pdb
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\obj\Debug\DevTeams.UI.csproj.AssemblyReference.cache
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\obj\Debug\DevTeams.UI.csproj.SuggestedBindingRedirects.cache
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\obj\Debug\DevTeams.UI.csproj.CoreCompileInputs.cache
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\obj\Debug\DevTeams.UI.csproj.CopyComplete
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\obj\Debug\DevTeams.UI.exe
+C:\Users\jderd\Documents\ElevenFiftyProjects\DotNetProjects\Dev_Teams1\DevTeams.UI\obj\Debug\DevTeams.UI.pdb

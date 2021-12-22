@@ -1,9 +1,5 @@
 ﻿using DevTeams_POCOs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevTeams_Repository
 {
@@ -28,7 +24,7 @@ namespace DevTeams_Repository
                 _developerContext.Add(developer);
                 return true;
             }
-        } 
+        }
 
 
         //Read -- Return list of developers or developer
@@ -86,12 +82,12 @@ namespace DevTeams_Repository
         // Create list of all developers that need Pluralsight license
         // Read
 
-        public List<Developer> GetDeveloperThatNeedsLicense ()
+        public List<Developer> GetDeveloperThatNeedsLicense()
         {
             List<Developer> devsThatNeedLicense = new List<Developer>();
             foreach (Developer developer in _developerContext)
             {
-                if(developer.HasPluralsight == false)
+                if (developer.HasPluralsight == false)
                 {
                     devsThatNeedLicense.Add(developer);
                 }
@@ -99,7 +95,7 @@ namespace DevTeams_Repository
             return devsThatNeedLicense;
 
             //  return _developerContext.Where(m => !m.HasPluralsight).ToList();   <-Alternative
-            
+
         }
 
 

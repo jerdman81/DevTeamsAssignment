@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DevTeams_POCOs
 {
@@ -15,8 +11,9 @@ namespace DevTeams_POCOs
     {
         public DevTeam() { }
 
-        public DevTeam(string teamName, List<Developer> developers)
+        public DevTeam(int id, string teamName, List<Developer> developers)
         {
+            Id = id;
             TeamName = teamName;
             Developers = developers;
         }
