@@ -17,13 +17,17 @@ namespace DevTeams_Repository
             {
                 return false;
             }
-            else
+            foreach (var dev in _developerContext)
             {
+                if (dev.FullName == developer.FullName)
+                {
+                    return false;
+                }
+            }
                 _count++;
                 developer.Id = _count;
                 _developerContext.Add(developer);
                 return true;
-            }
         }
 
 
@@ -76,8 +80,6 @@ namespace DevTeams_Repository
             bool deleteDeveloper = _developerContext.Remove(exitsingDeveloper);
             return deleteDeveloper;
         }
-
-
 
         // Create list of all developers that need Pluralsight license
         // Read
