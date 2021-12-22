@@ -39,7 +39,9 @@ namespace DevTeams.UI
                     "4. View Existing DevTeams\n" +
                     "5. Add A Developer to a DevTeam\n" +
                     "6. Remove A Developer from a DevTeam\n" +
-                    "7. View List of Developers needing Pluralsight License");
+                    "7. View List of Developers needing Pluralsight License\n" +
+                    "8. Exit");
+
 
                 // Add 5 or more DevTeam Methods
                 // Add Challenge Methods
@@ -69,6 +71,9 @@ namespace DevTeams.UI
                     case "7":
                         ViewDevelopersNeedingPluralsight();
                         break;
+                    case "8":
+                        ExitApplication();
+                        break;
                     default:
                         WriteLine("Invalid Selection");
                         WaitForKeypress();
@@ -77,6 +82,12 @@ namespace DevTeams.UI
                 Clear();
             }
         }
+
+        private void ExitApplication()
+        {
+            Environment.Exit(0);
+        }
+
         private void AddDeveloper()
         {
             Clear();
